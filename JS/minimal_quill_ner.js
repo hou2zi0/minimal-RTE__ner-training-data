@@ -46,11 +46,7 @@ const Up = document.getElementById('poly-file')
     }, false);
   });
 
-const textSnippetCounte = function(cnt, ttl) {
-  const counter = document.getElementById('snippet-counter');
-  counter.value = cnt;
-};
-
+// Provide markup functionality for buttons
 class SPAN extends Inline {
   static create(value) {
     let node = super.create();

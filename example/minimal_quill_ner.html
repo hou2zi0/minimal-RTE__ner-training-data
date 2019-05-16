@@ -146,23 +146,55 @@
       color: black;
       padding: 1px 1px 1px 1px;
     }
+
+    #file-div {
+      width: 50% !important;
+      margin: 0 auto;
+      margin-bottom: 1em;
+    }
+
+    #poly-file {
+      border: 1px solid #ccc;
+      padding: 1em 1em 1em 1em;
+    }
+
+    #snippet-counter {
+      border-bottom: 1px solid black;
+      padding-left: 0.3em;
+      padding-right: 0.3em;
+    }
+
+    #snippet-total {
+      border-bottom: 1px double #ccc;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
   </style>
 </head>
 
 <body>
-  <h3>Minimal TEI-Rich-Text-Editor</h3>
+  <h3>Minimal NER-Annotator</h3>
+  <div id="file-div">
+    <input type="file" id="poly-file" accept=".json" class="btn btn-primary" />
+  </div>
+
   <div id="tooltip-controls">
+    <span id="snippet-counter">0</span><br>
+    <span id="snippet-total">0</span><br>
     <button id="person-button" class="button" title="Person">🙋</button><br>
     <button id="place-button" class="button" title="Place">🏛️</button><br>
     <button id="org-button" class="button" title="Orga">👪</button>
     <button id="title-button" class="button" title="Title">🎓</button><br>
-    <button id="pre-button" class="button">⏪</button><br>
-    <button id="next-button" class="button">⏩</button>
-    <button id="download-button">💾</button>
+    <button id="pre-button" class="button" title="Previous text">⏪</button><br>
+    <button id="next-button" class="button" title="Next text">⏩</button><br>
+    <button id="download-button" title="Download active text as JSON">💾</button><br>
+    <button id="bulk-download-button" title="Download all texts as JSON">📦</button>
   </div>
   <div id="editor-container">Tell your story...</div>
 
 </body>
+<!-- D3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <!-- Includes the main Quill.js library. -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <!-- Includes our local JavaScript file in which we implement our rich text editor. -->

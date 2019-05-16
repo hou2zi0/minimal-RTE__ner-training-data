@@ -54,16 +54,12 @@ const textSnippetCounte = function(cnt, ttl) {
 class SPAN extends Inline {
   static create(value) {
     let node = super.create();
-    // Sanitize url value if desired
     node.setAttribute('data-annotation', value[0]);
     node.setAttribute('data-start', value[1]);
     node.setAttribute('data-end', value[2]);
     return node;
   }
   static formats(node) {
-    // We will only be called with a node already
-    // determined to be a Link blot, so we do
-    // not need to check ourselves
     node = {
       'annotation': node.getAttribute('data-annotation'),
       'start': node.getAttribute('data-start'),

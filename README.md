@@ -1,5 +1,5 @@
 # minimal-RTE__ner-training-data
-Minimal customization of [Quill.js](https://quilljs.com/) Rich Text Editor for easy annotation of text snippets for NER model training with, f.e. [spaCy](https://spacy.io/).
+Minimal customization of [Quill.js](https://quilljs.com/) Rich Text Editor for easy annotation of text snippets for NER model training with, f.e. [spaCy](https://spacy.io/). A live demo may be found [here](https://hou2zi0.github.io/minimal-RTE__ner-training-data/example/minimal_quill_ner.html).
 
 ## Simple RTE for NER Annotation
 

@@ -140,6 +140,19 @@
       content: "";
     }
 
+    span[data-annotation='DATE']:before {
+      content: "📅";
+    }
+
+    span[data-annotation='DATE'] {
+      background: #cce6ff;
+      padding: 0.2em 0.2em 0.2em 0.2em;
+    }
+
+    span[data-annotation='DATE']:after {
+      content: "";
+    }
+
     .simple-button {
       background: white;
       border-radius: 25px;
@@ -185,6 +198,7 @@
     <button id="place-button" class="button" title="Place">🏛️</button><br>
     <button id="org-button" class="button" title="Orga">👪</button>
     <button id="title-button" class="button" title="Title">🎓</button><br>
+    <button id="date-button" class="button" title="Date">📅</button><br>
     <button id="pre-button" class="button" title="Previous text">⏪</button><br>
     <button id="next-button" class="button" title="Next text">⏩</button><br>
     <button id="download-button" class="button" title="Download active text as JSON">💾</button><br>

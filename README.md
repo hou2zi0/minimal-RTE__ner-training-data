@@ -12,7 +12,7 @@ The interface provides a simple file upload expecting JSON-files containing the 
 ]
 ```
 
-The object’s text property is displayed as text inside the RTE. Other properties present in the object’s are not processed and for internal use only, e.g. for referencing or license purposes.
+The object’s `text` property is displayed as text inside the RTE. Other properties present in the object’s are not processed and for internal use only, e.g. for referencing or license purposes.
 
 ![Image](./data/imgs/ner_editor.png)
 
@@ -90,6 +90,47 @@ The annotated texts can be downloaded as a JSON-file. The interface provides a s
     }
 ]
 ```
+
+If the JSON-objects contain fields other than `text`, these fields are retained, e.g.:
+
+**In**
+
+```JSON
+[
+    {
+        "text": "Aufgestellt wurde ich, eine Stele, zu Häupten der Angesehenen, Frau Channa, Tochter des Herrn Alexander, die verschieden ist am 14. des Mondes Aw im Jahre 5 Tausend 32 der Zählung. Es sei ihre Seele im Garten Eden, Amen Sela",
+        "src": "http://www.steinheim-institut.de:80/cgi-bin/epidat?id=ffb-97 ",
+        "license": "CC-BY"
+    },
+]
+```
+
+**Out**
+
+```JSON
+[
+    {
+        "text": "Aufgestellt wurde ich, eine Stele, zu Häupten der Angesehenen, Frau Channa, Tochter des Herrn Alexander, die verschieden ist am 14. des Mondes Aw im Jahre 5 Tausend 32 der Zählung. Es sei ihre Seele im Garten Eden, Amen Sela\n",
+        "entities": [
+            [
+                68,
+                74,
+                "PERSON"
+            ],
+            [
+                94,
+                103,
+                "PERSON"
+            ]
+        ],
+        "src": "http://www.steinheim-institut.de:80/cgi-bin/epidat?id=ffb-97 ",
+        "license": "CC-BY",
+        "delta": "<p>Aufgestellt wurde ich, eine Stele, zu Häupten der Angesehenen, Frau <span data-annotation=\"PERSON\" data-start=\"68\" data-end=\"74\">Channa<\/span>, Tochter des Herrn <span data-annotation=\"PERSON\" data-start=\"94\" data-end=\"103\">Alexander<\/span>, die verschieden ist am 14. des Mondes Aw im Jahre 5 Tausend 32 der Zählung. Es sei ihre Seele im Garten Eden, Amen Sela<\/p>"
+    },
+]
+```
+
+The key `delta` contains the annotated text. Each annotation is given as `<span data-annotation="NER_TYPE" date-start="INT" date-end="INT">STRING</span>`. Thus, the content of `delta` may be parsed with a simple XSLT-file in order to transform the annotations in f.e. `<tei:rs type="person">`.
 
 ## Sample data
 The sample data contained in `data/texts/example.json` is taken from the first four epigraphic records of the catalogue [Frankfurt a.M., Battonstraße](http://www.steinheim-institut.de/cgi-bin/epidat?id=ffb), available on [_EPIDAT ─ Research Platform for Jewish Epigraphy_](http://www.steinheim-institut.de/cgi-bin/epidat?lang=en) built by [Thomas Kollatz](https://orcid.org/0000-0003-1904-1841). The epigraphic records are published under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
